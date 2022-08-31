@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Layout from '../components/layout';
 import React, {useState} from "react";
+import styles from '/styles/terms.module.css';
 
-function termsOfUse() {
+function TermsOfUse() {
     const [ checkbox, setCheckbox ] = React.useState(false);
     const handleCheckbox = e => {
         checkbox ? setCheckbox(false) : setCheckbox(true);
@@ -11,23 +13,18 @@ function termsOfUse() {
         checkbox? alert('Thanks for agreeing, enjoy your stay here') : alert('You forgot the checkbox, loser');
     };
     return (
-        <div>
-            <ul>
-                <li>
-                    <Link href="/">Home</Link>
-                </li>
-                <li>
-                    <Link href="about">About</Link>
-                </li>
-            </ul>
+        <Layout>
+            <div className={styles.terms}>
         <h1>Terms of use</h1>
-            You must not suck. That's it.
+            <p >You must not suck. That's it.</p>
             <form onSubmit={handleSubmit}>
                 <label>Well?</label>
-                <input name={checkbox} onClick={handleCheckbox} type="checkbox"/>
-                <button type="submit">Ok</button>
+                <br/>
+                <input className={styles.checkbox} name={checkbox} onClick={handleCheckbox} type="checkbox"/>
+                <button className={styles.button} type="submit">Ok</button>
             </form>
-        </div>)
+            </div>
+        </Layout>)
 }
 
-export default termsOfUse;
+export default TermsOfUse;
